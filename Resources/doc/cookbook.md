@@ -10,7 +10,7 @@ In the controller file
 $ob = new Highmap();
 $ob->chart->renderTo('mapchart');
 $ob->chart->borderWidth(1);
-$ob->title->text('OMI');
+$ob->title->text('My map chart');
 $ob->mapNavigation->enabled(true);
 $ob->series(array(
     array(
@@ -30,16 +30,18 @@ $ob->series(array(
             ),
         )
     ));
-$ob->plotOptions->series(array(
-    'events' => array(
-        'click' => new Expr(
+    // with plotOptions you can add some events like JS functions on map click
+    $ob->plotOptions->series(array(
+        'events' => array(
+            'click' => new Expr(
                 "function() {
                     console.log(event.point.code + ' clicked!');
                 }"
             )
         ),
-    'cursor' => 'pointer',
-));
+        // specify cursor on map hover
+        'cursor' => 'pointer',
+    ));
 ```
 
 In the twig file
