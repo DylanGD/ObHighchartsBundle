@@ -218,3 +218,7 @@ In the twig file
 ```twig
 <div id="mapchart" style="height: 500px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
 ```
+
+Map chart Result :
+
+![Alt text](img/mapchart.png?raw=true "Map chart result")
