@@ -80,7 +80,7 @@ In the twig file
 
 Map chart Result :
 
-![Alt text](img/mapchart.png?raw=true "Map chart result")
+![Alt text](Resources/doc/img/mapchart.png?raw=true "Map chart result")
 
 
 ## Contributing
