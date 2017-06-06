@@ -1,13 +1,13 @@
 {
     "name": "ob/highcharts-bundle",
     "type": "symfony-bundle",
-    "description": "Symfony2 Bundle that ease the use of highcharts to display rich graph and charts in your app",
-    "keywords": ["symfony2", "charting", "charts", "highcharts", "chart", "graph", "graphs", "ob", "marcaube"],
-    "homepage": "https://github.com/marcaube/ObHighchartsBundle",
+    "description": "Symfony2/Symfony3 Bundle that ease the use of highcharts to display rich graphs, charts and maps in your app. This is a fork from the official release with the maps support added.",
+    "keywords": ["symfony2", "symfony3", "charting", "charts", "highcharts", "chart", "graph", "graphs", "ob", "marcaube", "maps", "map", "dylangd"],
+    "homepage": "https://github.com/DylanGD/ObHighchartsBundle",
     "license": "MIT",
     "authors": [
         {
-            "name": "Marc Aubé"
+            "name": "Dylan GD"
         }
     ],
 
@@ -23,7 +23,7 @@
 
     "extra": {
         "branch-alias": {
-            "dev-master": "1.6.x-dev"
+            "dev-master": "map-support"
         }
     }
 }

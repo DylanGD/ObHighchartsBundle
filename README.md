@@ -1,6 +1,6 @@
-# ObHighchartsBundle
+# ObHighchartsBundle fork with maps support added
 
-`ObHighchartsBundle` eases the use of highcharts to display rich graphs and charts in your Symfony2 application by
+`ObHighchartsBundle` eases the use of highcharts to display rich graphs and charts in your Symfony2/Symfony3 applications by
 providing Twig extensions and PHP objects to do the heavy lifting. The bundle uses the excellent JS library
 [Highcharts](http://www.highcharts.com).
 
