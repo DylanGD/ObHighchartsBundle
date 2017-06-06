@@ -1,5 +1,64 @@
 # Cookbook
 
+## Map
+
+This is a simple recipe to create an French map-chart demo at [highcharts.com/maps/demo/color-axis](http://www.highcharts.com/maps/demo/color-axis)
+
+In the controller file
+
+```php
+$ob = new Highmap();
+$ob->chart->renderTo('mapchart');
+$ob->chart->borderWidth(1);
+$ob->title->text('OMI');
+$ob->mapNavigation->enabled(true);
+$ob->series(array(
+    array(
+        'data' => array(
+            array('value' => rand(1, 100), 'code' => 'Île-de-France', 'price' => rand(1, 100)),
+            array('value' => rand(1, 100), 'code' => 'Bourgogne', 'price' => rand(1, 100)),
+            array('value' => rand(1, 100), 'code' => 'Alsace', 'price' => rand(1, 100)),
+            array('value' => rand(1, 100), 'code' => 'Centre', 'price' => rand(1, 100)),
+        ),
+        'name' => 'FR',
+        'mapData' => new Expr("Highcharts.maps['countries/fr/fr-all']"),
+        'joinBy' => array('name', 'code'),
+        'tooltip' => array('pointFormat' => '{point.code}: {point.value}'),
+            'dataLabels' => array(
+                'enabled' => true,
+                'format' => '{point.price}',
+            ),
+        )
+    ));
+$ob->plotOptions->series(array(
+    'events' => array(
+        'click' => new Expr(
+                "function() {
+                    console.log(event.point.code + ' clicked!');
+                }"
+            )
+        ),
+    'cursor' => 'pointer',
+));
+```
+
+In the twig file
+
+```javascript
+<script src="https://code.highcharts.com/maps/highmaps.js"></script>
+<script src="https://code.highcharts.com/mapdata/countries/fr/fr-all.js"></script>
+<script type="text/javascript">
+    {{ chart(mapchart) }}
+</script>
+```
+
+```twig
+<div id="mapchart" style="height: 500px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
+```
+
+Map chart Result :
+
+![Alt text](img/mapchart.png?raw=true "Map chart result")
 
 ## Pie chart with legend
 
@@ -162,63 +221,3 @@ $formatter = new Expr('function () {
 $ob->tooltip->formatter($formatter);
 $ob->series($series);
 ```
-
-## Map
-
-This is a simple recipe to create an French map-chart demo at [highcharts.com/maps/demo/color-axis](http://www.highcharts.com/maps/demo/color-axis)
-
-In the controller file
-
-```php
-$ob = new Highmap();
-$ob->chart->renderTo('mapchart');
-$ob->chart->borderWidth(1);
-$ob->title->text('OMI');
-$ob->mapNavigation->enabled(true);
-$ob->series(array(
-    array(
-        'data' => array(
-            array('value' => rand(1, 100), 'code' => 'Île-de-France', 'price' => rand(1, 100)),
-            array('value' => rand(1, 100), 'code' => 'Bourgogne', 'price' => rand(1, 100)),
-            array('value' => rand(1, 100), 'code' => 'Alsace', 'price' => rand(1, 100)),
-            array('value' => rand(1, 100), 'code' => 'Centre', 'price' => rand(1, 100)),
-        ),
-        'name' => 'FR',
-        'mapData' => new Expr("Highcharts.maps['countries/fr/fr-all']"),
-        'joinBy' => array('name', 'code'),
-        'tooltip' => array('pointFormat' => '{point.code}: {point.value}'),
-            'dataLabels' => array(
-                'enabled' => true,
-                'format' => '{point.price}',
-            ),
-        )
-    ));
-$ob->plotOptions->series(array(
-    'events' => array(
-        'click' => new Expr(
-                "function() {
-                    console.log(event.point.code + ' clicked!');
-                }"
-            )
-        ),
-    'cursor' => 'pointer',
-));
-```
-
-In the twig file
-
-```javascript
-<script src="https://code.highcharts.com/maps/highmaps.js"></script>
-<script src="https://code.highcharts.com/mapdata/countries/fr/fr-all.js"></script>
-<script type="text/javascript">
-    {{ chart(mapchart) }}
-</script>
-```
-
-```twig
-<div id="mapchart" style="height: 500px; min-width: 310px; max-width: 600px; margin: 0 auto"></div>
-```
-
-Map chart Result :
-
-![Alt text](img/mapchart.png?raw=true "Map chart result")
